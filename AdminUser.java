@@ -9,7 +9,7 @@ public class AdminUser extends User implements HIPAACompliantUser, HIPAAComplian
     
     // TO DO: Implement a constructor that takes an ID and a role
     public AdminUser(int id, String role) {
-    	this.id = id;
+    	this.id = id; // could use: super(id); ??
     	this.role = role;
     	this.securityIncidents = new ArrayList<String>();
     }
@@ -23,8 +23,8 @@ public class AdminUser extends User implements HIPAACompliantUser, HIPAAComplian
     	return false;
     }
 	@Override
-    public boolean accessAuthorized(Integer id) {
-    	if(!id.equals(this.id)) {
+    public boolean accessAuthorized(Integer confirmedAuthID) {
+    	if(!confirmedAuthID.equals(this.id)) {
     		authIncident();
     		return false;
     	}
