@@ -26,6 +26,7 @@ public class AdminUser extends User implements HIPAACompliantUser, HIPAAComplian
     public boolean accessAuthorized(Integer id) {
     	if(!id.equals(this.id)) {
     		authIncident();
+    		return false;
     	}
     	return true;
     }
