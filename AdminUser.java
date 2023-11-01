@@ -1,5 +1,4 @@
 package com.caresoft.clinicapp;
-
 import java.util.ArrayList;
 import java.util.Date;
 
@@ -15,6 +14,7 @@ public class AdminUser extends User implements HIPAACompliantUser, HIPAAComplian
     	this.securityIncidents = new ArrayList<String>();
     }
     // TO DO: Implement HIPAACompliantUser!
+	@Override
     public boolean assignPin(int pin) {
     	if(pin>99999) {
     		this.pin = pin;
@@ -22,15 +22,15 @@ public class AdminUser extends User implements HIPAACompliantUser, HIPAAComplian
     	}
     	return false;
     }
-
+	@Override
     public boolean accessAuthorized(Integer id) {
     	if(!id.equals(this.id)) {
-//    		System.out.println("not authorized");
     		authIncident();
     	}
     	return true;
     }
     // TO DO: Implement HIPAACompliantAdmin!
+	@Override
     public ArrayList<String> reportSecurityIncidents(){
     	return this.securityIncidents;
     }
@@ -40,7 +40,6 @@ public class AdminUser extends User implements HIPAACompliantUser, HIPAAComplian
             "Datetime Submitted: %s \n,  Reported By ID: %s\n Notes: %s \n", 
             new Date(), this.id, notes
         );
-//        System.out.println(report);
         securityIncidents.add(report);
     }
     public void authIncident() {

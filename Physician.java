@@ -1,5 +1,4 @@
 package com.caresoft.clinicapp;
-
 import java.util.ArrayList;
 import java.util.Date;
 
@@ -12,6 +11,7 @@ public class Physician extends User implements HIPAACompliantUser {
 		this.id = IDcopy;
 	}
     // TO DO: Implement HIPAACompliantUser!
+	@Override
 	public boolean assignPin(int pin) {
 		if(pin>999 && pin<10000) {
 			this.pin = pin;
@@ -20,6 +20,7 @@ public class Physician extends User implements HIPAACompliantUser {
 			return false;
 		}
 	}
+	@Override
 	public boolean accessAuthorized(Integer id) {
 		if(id.equals(this.id)) {
 			return true;
